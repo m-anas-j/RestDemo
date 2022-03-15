@@ -2,6 +2,10 @@ package com.example.restdemo;
 
 import java.io.Serializable;
 
+/**
+ * A simple javabean that represents a student entity.
+ */
+
 public class StudentBean implements Serializable {
     private int id;
     private String name;

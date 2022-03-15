@@ -3,6 +3,9 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../../../../Lecturer Materials/Summer Semester 2021/CSE 4635 Web Architecture/Lecture 14 - Web Services/RestDemo Documentation" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
