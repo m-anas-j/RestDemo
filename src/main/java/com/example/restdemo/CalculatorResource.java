@@ -7,7 +7,8 @@ import javax.ws.rs.core.MediaType;
 public class CalculatorResource {
 
     /**
-     * This GET method takes two path parameters as input from the client side and returns the addition of the two numbers
+     * This GET method takes two query parameters as input from the client side and returns the addition of the two numbers.
+     * Query parameters are added to the url using '?' and multiple query parameters can be added, separated by '&' sign
      * @param a The first number
      * @param b The second number
      * @return Summation of a and b
@@ -20,7 +21,7 @@ public class CalculatorResource {
     }
 
     /**
-     * This GET method takes two query parameters as input and returns the subrtraction between the two numbers
+     * This GET method takes two path parameters as input and returns the subrtraction between the two numbers
      * @param a The first number
      * @param b The second number
      * @return Subtraction between a and b

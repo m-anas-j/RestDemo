@@ -32,12 +32,16 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
-        //Location of the resource
-        String baseURI = "http://localhost:8080/RestDemo/api/student";
+        //The target URI / location  of the resource
+        String baseURI = "http://localhost:8082/RestDemo/api/student/student-list";
 
-        //Sending a GET request to read information about the list of students
+        /*
+        Creating a Java RESTful Client that can send GET request to a RESTful endpoint,
+        then sending a GET request to read information about the list of students
+         */
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target(baseURI);
+        //Creating a JsonArray to store the received list of students from the RESTful endpoint
         JsonArray studentList = target.request(MediaType.APPLICATION_JSON).get(JsonArray.class);
 
         // Hello
@@ -49,7 +53,7 @@ public class HelloServlet extends HttpServlet {
     }
 
     /**
-     * When a client wants to add a student through the form in the index page using a RESTful call, this method is invoked.
+     * When a client wants to add a student through the first form in the index page using a REST call, this method is invoked.
      * At first a JSON object is created using the information provided by the client in the HTML form.
      * The JSON object is then sent to the corresponding RESTful resource.
      * @param request The HttpServletRequest object
@@ -61,8 +65,8 @@ public class HelloServlet extends HttpServlet {
         String name = request.getParameter("name-field");
         String semester = request.getParameter("semester-field");
 
-        //The target URI of the resource
-        String baseURI = "http://localhost:8080/RestDemo/api/student";
+        //The target URI / location  of the resource
+        String baseURI = "http://localhost:8082/RestDemo/api/student";
 
         //Creating a JSON object that represents the student information the client wants to add
         JsonObject student = Json.createObjectBuilder()
@@ -82,7 +86,7 @@ public class HelloServlet extends HttpServlet {
         //Finally, calling the POST method on the WebTarget object
         target.request().post(Entity.entity(student, MediaType.APPLICATION_JSON));
 
-
+        //Printing the information of the newly added student in an HTML page
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>" + "This is a post request. The student being created is as follows: <br> </h1>" + student.toString());
